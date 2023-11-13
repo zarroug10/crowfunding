@@ -1,0 +1,50 @@
+
+
+.main {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.pagetitle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table th,
+.table td {
+  border: 1px solid #1DAA97;
+  padding: 12px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #1DAA97;
+  color: #fff;
+}
+
+
+button {
+  background-color: #1DAA97;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #14776b;
+}
+
+

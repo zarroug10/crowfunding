@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="delete-comment.component.css"> 
+    <title>Quick Wated - Delete Comment</title>
+</head>
+
+<body>
+    
+    <div class="delete-comment-container">
+        <h2>Delete Comment</h2>
+        <div class="delete-comment-form">
+            <label for="commentId">Comment ID:</label>
+            <input id="commentId" [(ngModel)]="commentId" placeholder="Enter Comment ID">
+            <button (click)="deleteComment()">Delete Comment</button>
+        </div>
+      
+    </div>
+</body>
+<div class="image-container">
+    <img src="assets\red.jpg" alt="Red Image">
+</div>
+</html>
