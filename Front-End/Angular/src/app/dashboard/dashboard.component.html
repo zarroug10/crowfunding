@@ -1,0 +1,35 @@
+<!-- dashboard.component.html -->
+
+<div class="container">
+  <div class="chart-container">
+    <h2>Likes par jours</h2>
+    <div style="display: block;">
+      <canvas baseChart
+              [datasets]="likesChartData.datasets"
+              [labels]="likesChartData.labels"
+              [options]="barChartOptions"
+              [legend]="true"
+              [type]="barChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+      </canvas>
+    </div>
+    <button (click)="randomizeLikes()">Randomize Likes Data</button>
+  </div>
+
+  <div class="chart-container">
+    <h2>Finance par semaine</h2>
+    <div style="display: block;">
+      <canvas baseChart
+              [datasets]="financeChartData.datasets"
+              [labels]="financeChartData.labels"
+              [options]="barChartOptions"
+              [legend]="true"
+              [type]="barChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+      </canvas>
+    </div>
+    <button (click)="randomizeFinance()">Randomize Finance Data</button>
+  </div>
+</div>
