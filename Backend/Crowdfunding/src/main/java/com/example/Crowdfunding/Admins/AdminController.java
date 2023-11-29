@@ -9,6 +9,8 @@ import com.example.Crowdfunding.Comments.CommentService;
 import com.example.Crowdfunding.Members.Member;
 import com.example.Crowdfunding.Members.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -50,6 +52,25 @@ public class AdminController {
     public void updateAdmin(@PathVariable Long id, @RequestBody Admin admin) {
         adminService.updateAdmin(id, admin);
     }
+    //Login
+    @PostMapping("/login")
+    public ResponseEntity<?> loginAdmin(@RequestBody Admin admin) {
+        String email = admin.getEmail();
+        String password = admin.getPassword();
+
+        // Use your AdminService to authenticate the admin
+        Admin loggedInAdmin = adminService.loginAdmin(email, password);
+
+        if (loggedInAdmin != null) {
+            // Admin is authenticated, you may generate a token or perform other actions
+            // For simplicity, returning the authenticated admin for now
+            return new ResponseEntity<>(loggedInAdmin, HttpStatus.OK);
+        } else {
+            // Authentication failed
+            return new ResponseEntity<>("Incorrect email or password", HttpStatus.UNAUTHORIZED);
+        }
+    }
+
 
     //manage categories
     @PostMapping("/categories")
