@@ -50,7 +50,15 @@ public class AdminService {
         // Authentication failed
       //  return null;
     //}
-        public Admin loginAdmin(String email, String password) {
-            return adminRepository.findByEmailAndPassword(email, password);
+        public boolean authenticateAdmin(String email, String password) {
+            Admin admin = adminRepository.findByEmail(email);
+
+            if (admin != null && admin.getPassword().equals(password)) {
+                // Passwords match, login successful
+                return true;
+            } else {
+                // Either admin not found or password doesn't match
+                return false;
+            }
         }
 }

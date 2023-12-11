@@ -6,14 +6,19 @@ import com.example.Crowdfunding.Categories.Categories;
 import com.example.Crowdfunding.Categories.CategoriesService;
 import com.example.Crowdfunding.Comments.Comment;
 import com.example.Crowdfunding.Comments.CommentService;
+import com.example.Crowdfunding.LoginDTO;
 import com.example.Crowdfunding.Members.Member;
 import com.example.Crowdfunding.Members.MemberRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -24,6 +29,7 @@ public class AdminController {
     private final CategoriesService categoriesService;
     private final CommentService commentService;
     private final MemberRepository memberRepository;
+    private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     @Autowired
     public AdminController(AdminService adminService, CategoriesService categoriesService, CommentService commentService, MemberRepository memberRepository) {
@@ -43,6 +49,11 @@ public class AdminController {
     public List<Admin> getAllAdmins() {
         return adminService.getAllAdmins();
     }
+    @PostMapping("/create")
+    public ResponseEntity<Admin> createAdmin(@RequestBody Admin admin) {
+        Admin createdAdmin = adminService.createAdmin(admin);
+        return new ResponseEntity<>(createdAdmin, HttpStatus.CREATED);
+    }
 
     @DeleteMapping("/{id}")
     public void deleteAdmin(@PathVariable Long id) {
@@ -54,22 +65,31 @@ public class AdminController {
     }
     //Login
     @PostMapping("/login")
-    public ResponseEntity<?> loginAdmin(@RequestBody Admin admin) {
-        String email = admin.getEmail();
-        String password = admin.getPassword();
+    public ResponseEntity<Map<String, String>> loginAdmin(@RequestBody LoginDTO loginDTO) {
+        logger.info("Received login request for email: {}", loginDTO.getEmail());
 
-        // Use your AdminService to authenticate the admin
-        Admin loggedInAdmin = adminService.loginAdmin(email, password);
+        // Your existing login logic here
+        boolean loginSuccess = adminService.authenticateAdmin(loginDTO.getEmail(), loginDTO.getPassword());
 
-        if (loggedInAdmin != null) {
-            // Admin is authenticated, you may generate a token or perform other actions
-            // For simplicity, returning the authenticated admin for now
-            return new ResponseEntity<>(loggedInAdmin, HttpStatus.OK);
+        if (loginSuccess) {
+            logger.info("Login successful for email: {}", loginDTO.getEmail());
+
+            Map<String, String> successResponse = new HashMap<>();
+            successResponse.put("message", "Login successful");
+            // ... other success details ...
+
+            return ResponseEntity.ok(successResponse);
         } else {
-            // Authentication failed
-            return new ResponseEntity<>("Incorrect email or password", HttpStatus.UNAUTHORIZED);
+            logger.warn("Login failed for email: {}", loginDTO.getEmail());
+
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("error", "Unauthorized access");
+            // ... other error details ...
+
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
         }
     }
+
 
 
     //manage categories

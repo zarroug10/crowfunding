@@ -22,7 +22,6 @@ public class MemberService {
     public Member createMember(Member member) {
         // Hash the password before saving
        // member.setPassword(passwordEncoder.encode(member.getPassword()));
-
         return memberRepository.save(member);
     }
 
