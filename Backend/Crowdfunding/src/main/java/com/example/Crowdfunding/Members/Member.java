@@ -16,7 +16,6 @@ public class Member {
     @SequenceGenerator(name = "SEQUENCE_MEMBERS", sequenceName = "members_member_id_seq", allocationSize = 1)
     private Long member_id;
 
-    private String MemberName;
     private String first_name;
     private String last_name;
     private String city;

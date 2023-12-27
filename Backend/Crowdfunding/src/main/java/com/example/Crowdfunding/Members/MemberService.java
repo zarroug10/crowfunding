@@ -31,7 +31,15 @@ public class MemberService {
     }
 
     public Optional<Member> getMemberById(Long id) {
+        if (id == null) {
+            // Handle unauthenticated access, maybe throw an exception or return an appropriate response
+            return Optional.empty();
+        }
         return memberRepository.findById(id);
+    }
+
+    public Member findByEmail(String email) {
+        return memberRepository.findByEmail(email);
     }
 
     public void deleteMember(Long id) {
@@ -42,7 +50,7 @@ public class MemberService {
         Member existingMember = memberRepository.findById(id)
                 .orElseThrow(() -> new IllegalStateException("Member not found"));
         // Update fields as needed
-        existingMember.setMemberName(member.getMemberName());
+        existingMember.setEmail(member.getEmail());
         // ... update other fields
         memberRepository.save(existingMember);
     }

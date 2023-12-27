@@ -23,9 +23,10 @@ public class Project {
     @SequenceGenerator(name = "SEQUENCE_PROJECT", sequenceName = "projects_project_id_seq", allocationSize = 1)
     private Long project_id;
 
-    private String ProjectName;
+    private String project_name;
     private String project_description;
     private String project_deadline;
+    private String imageUrl;
     private Date start_date;
     private boolean is_closed;
     private double funds_contributed;
@@ -39,8 +40,7 @@ public class Project {
     private Member member;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_name")
     private Categories category;
-    // Constructors, getters, setters, and other methods
 }
 

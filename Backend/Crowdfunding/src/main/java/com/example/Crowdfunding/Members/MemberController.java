@@ -1,6 +1,10 @@
 package com.example.Crowdfunding.Members;
 
 
+import com.example.Crowdfunding.passswordreset.ForgotPasswordRequest;
+import com.example.Crowdfunding.passswordreset.PasswordResetToken;
+import com.example.Crowdfunding.passswordreset.PasswordResetTokenServiceImpl;
+import com.example.Crowdfunding.passswordreset.ResetPasswordRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +18,12 @@ import java.util.Optional;
 public class MemberController {
 
     private final MemberService memberService;
+    private final PasswordResetTokenServiceImpl passwordResetTokenService;
 
     @Autowired
-    public MemberController(MemberService memberService) {
+    public MemberController(MemberService memberService, PasswordResetTokenServiceImpl passwordResetTokenService) {
         this.memberService = memberService;
+        this.passwordResetTokenService = passwordResetTokenService;
     }
 
     @PostMapping("/register")
@@ -70,4 +76,29 @@ public class MemberController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect email or password");
         }
     }
+
+    @PostMapping("/forgot-password")
+    public ResponseEntity<?> forgotPassword(@RequestBody ForgotPasswordRequest request) {
+        Member member = memberService.findByEmail(request.getEmail());
+        if (member == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Member not found");
+        }
+
+        PasswordResetToken resetToken = passwordResetTokenService.createToken(member);
+        // Send resetToken.getToken() to the member via email
+
+        return ResponseEntity.ok("Password reset instructions sent to your email");
+    }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<?> resetPassword(@RequestBody ResetPasswordRequest request) {
+        if (!passwordResetTokenService.validateToken(request.getToken())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid or expired token");
+        }
+
+        passwordResetTokenService.resetPassword(request.getToken(), request.getNewPassword());
+        return ResponseEntity.ok("Password reset successfully");
+    }
+
+
 }

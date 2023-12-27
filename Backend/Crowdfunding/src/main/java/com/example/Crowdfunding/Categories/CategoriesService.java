@@ -25,8 +25,13 @@ public class CategoriesService {
     }
 
     public Optional<Categories> getCategoryById(Long id) {
+        if (id == null) {
+            // Handle the case where ID is null, for example, by throwing an exception
+            throw new IllegalArgumentException("Category ID must not be null");
+        }
         return categoriesRepository.findById(id);
     }
+
 
     public void deleteCategory(Long id) {
         categoriesRepository.deleteById(id);
