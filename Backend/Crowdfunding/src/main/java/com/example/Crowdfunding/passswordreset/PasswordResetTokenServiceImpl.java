@@ -89,8 +89,8 @@ public class PasswordResetTokenServiceImpl implements PasswordResetTokenService 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(recipientEmail); // Set the member's email address as the recipient
         message.setSubject("Password Reset Request");
-        message.setText("To reset your password, click the link below:\n"
-                + "http://your-app-url/reset-password?token=" + token);
+        message.setText("To reset your password,use the token below:\n"
+                + "token=" + token);
 
         mailSender.send(message);
     }

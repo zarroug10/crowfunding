@@ -9,6 +9,8 @@ import com.example.Crowdfunding.Comments.CommentService;
 import com.example.Crowdfunding.LoginDTO;
 import com.example.Crowdfunding.Members.Member;
 import com.example.Crowdfunding.Members.MemberRepository;
+import com.example.Crowdfunding.Projects.ProjectService;
+import com.example.Crowdfunding.Projects.ProjectStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +32,15 @@ public class AdminController {
     private final CommentService commentService;
     private final MemberRepository memberRepository;
     private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+    private final ProjectService projectService;
 
     @Autowired
-    public AdminController(AdminService adminService, CategoriesService categoriesService, CommentService commentService, MemberRepository memberRepository) {
+    public AdminController(AdminService adminService, CategoriesService categoriesService, CommentService commentService, MemberRepository memberRepository, ProjectService projectService) {
         this.adminService = adminService;
         this.categoriesService = categoriesService;
         this.commentService = commentService;
         this.memberRepository = memberRepository;
+        this.projectService = projectService;
     }
 
 
@@ -134,4 +138,20 @@ public class AdminController {
     public void deleteComment(@PathVariable Long id) {
         commentService.deleteComment(id);
     }
+
+    //manageProjects
+    @PostMapping("/approve-project/{projectId}")
+    public ResponseEntity<?> approveProject(@PathVariable Long projectId) {
+        projectService.updateProjectStatus(projectId, ProjectStatus.APPROVED);
+        return ResponseEntity.ok("Project approved successfully");
+    }
+    @PostMapping("/reject-project/{projectId}")
+    public ResponseEntity<?> rejectProject(@PathVariable Long projectId) {
+        projectService.updateProjectStatus(projectId, ProjectStatus.REJECTED);
+        return ResponseEntity.ok("Project Rejected");
+    }
+
 }
+
+
+

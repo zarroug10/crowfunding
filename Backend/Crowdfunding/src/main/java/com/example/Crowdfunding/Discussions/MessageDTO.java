@@ -8,8 +8,6 @@ import java.util.Date;
 @Getter
 @Setter
 public class MessageDTO {
-    private Long adminId;
     private Long memberId;
     private String messageText;
-    private Date MessageDate ;
 }

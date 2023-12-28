@@ -1,7 +1,10 @@
 package com.example.Crowdfunding.Discussions;
 
 
+import com.example.Crowdfunding.Admins.Admin;
+import com.example.Crowdfunding.Admins.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,10 +17,12 @@ import java.util.Optional;
 public class DiscussionController {
 
     private final DiscussionService discussionService;
+    private final AdminService adminService;
 
     @Autowired
-    public DiscussionController(DiscussionService discussionService) {
+    public DiscussionController(DiscussionService discussionService, AdminService adminService) {
         this.discussionService = discussionService;
+        this.adminService = adminService;
     }
 
     @PostMapping
@@ -43,5 +48,25 @@ public class DiscussionController {
     @PutMapping("/{id}")
     public void updateDiscussion(@PathVariable("id") Long id, @RequestBody Discussion discussion) {
         discussionService.updateDiscussion(id, discussion);
+    }
+    @PostMapping("/sendMessage")
+    public ResponseEntity<String> sendMessageToAdmin(@RequestBody MessageDTO messageDTO) {
+        Long adminId = 1L;
+        Optional<Admin> admin = Optional.ofNullable(adminService.getAdminById(adminId));
+
+        if (admin.isPresent()) {
+            // Create a discussion object with the message and admin details
+            Discussion discussion = new Discussion();
+            discussion.setMemberId(messageDTO.getMemberId());
+            discussion.setMessageText(messageDTO.getMessageText());
+            discussion.setAdminId(adminId);
+
+            // Save the discussion to the database
+            discussionService.createDiscussion(discussion);
+
+            return ResponseEntity.ok("Message sent successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin not found");
+        }
     }
 }

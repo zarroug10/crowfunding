@@ -20,13 +20,9 @@ public class Discussion {
     private String MessageText;
     private Date MessageDate;
 
-    @ManyToOne
-    @JoinColumn(name = "admin_id")
-    private Admin admin;
+    @Column(name = "admin_id")
+    private Long adminId;
 
-    @ManyToOne
-    @JoinColumn(name = "member_id")
-    private Member member;
-
-    // Define relationships here if needed
+    @Column(name = "member_id")
+    private Long memberId;
 }

@@ -32,7 +32,8 @@ public class Project {
     private double funds_contributed;
     private double funds_to_raise;
 
-    private boolean validated;
+    @Enumerated(EnumType.STRING)
+    private ProjectStatus status;
 
 
     @ManyToOne

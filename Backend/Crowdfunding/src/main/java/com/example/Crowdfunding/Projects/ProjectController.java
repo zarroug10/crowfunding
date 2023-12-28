@@ -54,6 +54,12 @@ public class ProjectController {
         }
     }
 
+    @PostMapping("/submit-for-approval/{projectId}")
+    public ResponseEntity<?> submitForApproval(@PathVariable Long projectId) {
+        projectService.updateProjectStatus(projectId, ProjectStatus.PENDING);
+        return ResponseEntity.ok("Project submitted for approval");
+    }
+
 
 
     @GetMapping("/{id}")

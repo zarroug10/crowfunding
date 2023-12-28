@@ -27,6 +27,7 @@ public class ProjectService {
     }
 
     public Project createProject(Project project, Long memberId, Long categoryId) {
+        project.setStatus(ProjectStatus.PENDING);
         // Check if the member and category exist
         Optional<Member> member = memberService.getMemberById(memberId);
         Optional<Categories> category = categoriesService.getCategoryById(categoryId);
@@ -42,6 +43,18 @@ public class ProjectService {
             // Handle case where member or category does not exist
             throw new IllegalArgumentException("Member or category not found");
         }
+    }
+
+    //ProjectStatus
+    public void updateProjectStatus(Long projectId, ProjectStatus newStatus) {
+        Project existingProject = projectRepository.findById(projectId)
+                .orElseThrow(() -> new IllegalStateException("Project not found"));
+
+        // Update the project status
+        existingProject.setStatus(newStatus);
+
+        // Save the updated project
+        projectRepository.save(existingProject);
     }
 
     public List<Project> getAllProjects() {
