@@ -95,7 +95,6 @@ public class MemberController {
         if (!passwordResetTokenService.validateToken(request.getToken())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid or expired token");
         }
-
         passwordResetTokenService.resetPassword(request.getToken(), request.getNewPassword());
         return ResponseEntity.ok("Password reset successfully");
     }
