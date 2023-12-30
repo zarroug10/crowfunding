@@ -1,0 +1,64 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #1DAA97;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  header h1 {
+    margin: 0;
+  }
+  
+  header p {
+    margin: 10px 0;
+  }
+  
+  #contact-form,
+  #contact-info {
+    width: 80%;
+    margin: 20px auto;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 5px;
+  }
+  
+  input,
+  textarea {
+    margin-bottom: 10px;
+    padding: 8px;
+  }
+  
+  button {
+    background-color: #1DAA97;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+  
+  #contact-info ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #contact-info li {
+    margin-bottom: 10px;
+  }
+  
+  
+  

@@ -1,0 +1,49 @@
+<div class="header">
+  <img src="assets\management.jpg" alt="Project Photo" class="project-photo">
+  <div class="donation-info-container">
+    <div class="donors-info">
+      <p class="donors-count">DONORS: {{ donorsCount }}</p>
+      <p class="money-raised">RAISED: {{ moneyRaised }} $</p>
+      <div class="progress-bar" [style.width.%]="(moneyRaised / donationGoal) * 100"></div>
+      <p class="goal-info">Goals: {{ donationGoal }} $</p>
+      <p class="days-left">daysLeft: {{ daysLeft }} day</p>
+    </div>
+    <div class="donate-button-container">
+      <button class="donate-button" routerLink="/donation-form">Donate now</button>
+    </div>
+  </div>
+  <div class="social-icons">
+    <img src="assets\facebook.jpg" alt="Facebook">
+    <img src="assets\twitter.png" alt="Twitter">
+    <img src="assets\youtube.png" alt="YouTube">
+    <img src="assets\whatsapp.png" alt="WhatsApp">
+    <img src="assets\linkedin.png" alt="LinkedIn">
+    <img src="assets\istagram.jpg" alt="Instagram">
+  </div>
+</div>
+
+<div class="description">
+
+  <h2>ÉducatioTech</h2>
+  
+  <p>Bienvenue dans "ÉducatioTech", une initiative visionnaire qui s'efforce de transformer <br>
+    l'éducation en une expérience plus accessible, interactive et innovante. <br>Notre mission est de fournir aux étudiants
+     du monde <br>
+    entier des opportunités éducatives équitables, en utilisant la technologie comme catalyseur de changement.</p>
+</div>
+
+<div class="reaction-buttons">
+  <button class="like-button">like</button>
+  <button class="dislike-button">dislike</button>
+  <button class="comment-button">comment</button>
+  <button class="share-button">Share</button>
+</div>
+
+<div class="page-divider"></div>
+
+<div class="page-sections">
+  <button class="section-button"routerLink="/story" >Story</button>
+  <button class="section-button"routerLink="/supporters">Supporters</button>
+  <button class="section-button" routerLink="/faq">FAQ</button>
+</div>
+

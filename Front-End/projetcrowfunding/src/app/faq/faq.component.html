@@ -1,0 +1,35 @@
+
+<div class="faq-container">
+    <h1 class="faq-title">How can I help you?</h1>
+  
+    <div class="search-container">
+      
+      <label for="searchInput"><i class="fas fa-search"></i></label>
+      <input type="text" id="searchInput" placeholder="Search help articles"> 
+    </div>
+  
+    <div class="question-buttons">
+      <button (click)="showBackerQuestions()">Backer Questions</button>
+      <button (click)="showCreatorQuestions()">Creator Questions</button>
+    </div>
+  
+  
+  
+      <div class="category" *ngFor="let question of currentQuestions">
+        <h3 (click)="toggleAnswer(question)">{{ question.question }}</h3>
+        <ul *ngIf="question.showAnswer">
+          <li>{{ question.answer }}</li>
+        </ul>
+      </div>
+    </div>
+  
+  <div class="donation-container">
+    <p>"Your contribution will pave the way for innovation and progress.<br>
+       Join us in our mission to build a brighter future by contributing to our goal of raising $25,000.<br> 
+       Every donation brings us one step closer to achieving our vision of a better tomorrow."</p>
+  
+       <button  routerLink="/donation-form">Donate now</button>
+    
+    </div>
+  
+  

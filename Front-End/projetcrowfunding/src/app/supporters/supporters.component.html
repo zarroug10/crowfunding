@@ -1,0 +1,20 @@
+<!-- supporters.component.html -->
+
+<div class="supporters-container">
+    <div *ngFor="let creator of creators; let even = even" class="supporters-info" [ngClass]="{'even': even, 'odd': !even}">
+      <h3>{{ creator.name }}</h3>
+      <p>Amount Needed : {{ creator.amount | currency:'USD':'symbol-narrow' }}</p>
+      <p>raised by {{ creator.supporters }} supporters</p>
+    </div>
+  </div>
+  <div class="donation-container">
+  <p>"Your contribution will pave the way for innovation and progress.<br>
+     Join us in our mission to build a brighter future by contributing to our goal of raising $25,000.<br> 
+     Every donation brings us one step closer to achieving our vision of a better tomorrow."</p>
+
+     <button  routerLink="/donation-form">Donate now</button>
+  
+  </div>
+
+
+

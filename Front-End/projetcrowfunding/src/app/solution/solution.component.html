@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+    <h2>Choose your perfect solution for your business</h2>
+    <ul>
+      <li (click)="chooseSolution('digitalPartner')">
+        <h3>Find Your Digital Partner</h3>
+        <p>Connect with a digital partner who can help you navigate the digital landscape, build online presence, and enhance your business.</p>
+        
+        <div class="solution-details">
+          <img src="assets\partner.jpg" alt="Digital Partner Image">
+          <p>Why choose us as your digital partner:</p>
+          <ul>
+            <li>Expertise in digital marketing</li>
+            <li>Proven track record of success</li>
+            <li>Customized solutions for your business</li>
+          </ul>
+          <a href="routerlink=/setting" >Learn more about our digital partner services</a>
+          <button (click)="contactDigitalPartner()" routerLink="/partnerdigital">Contact Digital Partner</button>
+        </div>
+    
+      </li>
+  
+      <li (click)="chooseSolution('seo')">
+        <h3>Go to SEO</h3>
+        <p>Optimize your website for search engines and improve its visibility. Enhance your online presence and attract more visitors through effective SEO strategies.</p>
+        
+        <div class="solution-details">
+          <img src="assets\seo.jpg" alt="SEO Image">
+          <p>Why choose our SEO services:</p>
+          <ul>
+            <li>Keyword optimization for higher rankings</li>
+            <li>Comprehensive SEO audit and analysis</li>
+            <li>Continuous monitoring and improvement</li>
+          </ul>
+          <a href="link-to-seo-services" target="_blank">Explore our SEO services</a>
+          <button (click)="goToSEO()" routerLink="/seo">Go to SEO</button>
+        </div>
+        
+      </li>
+  
+      <li (click)="chooseSolution('contactCoach')">
+        <h3>Contact Coach</h3>
+        <p>Get personalized coaching to overcome business challenges, set goals, and achieve success. Our experienced coaches are here to guide you.</p>
+        
+        <div class="solution-details">
+          <img src="assets\coach.jpg" alt="Coach Image">
+          <p>Why choose our coaching services:</p>
+          <ul>
+            <li>Experienced business coaches</li>
+            <li>Customized coaching plans</li>
+            <li>Support at every step of your business journey</li>
+          </ul>
+          <a href="link-to-coaching-services" target="_blank">Learn more about our coaching services</a>
+          <button (click)="contactCoach()" routerLink="/coach">Contact Coach</button>
+        </div>
+        
+      </li>
+  
+    </ul>
+  
+  

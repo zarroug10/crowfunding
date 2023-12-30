@@ -1,0 +1,86 @@
+h1 {
+  text-align: center;
+  color:#1DAA97 ;
+}
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: border-color 0.3s ease-in-out;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #1DAA97;
+}
+
+button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #1DAA97;
+}
+
+
+button[type="button"] {
+  background-color:#1DAA97 ;
+  margin-bottom: 10px;
+}
+
+button[type="button"]:hover {
+  background-color: #1DAA97;
+}
+
+
+.button-container {
+  text-align: center;
+}
+
+
+button[type="submit"] {
+  order: 3;
+  width: 100%; 
+}
+
+button[type="button"].add-video {
+  order: 1;
+}
+
+button[type="button"].add-picture {
+  order: 2;
+}
+
+button[type="button"].save-draft {
+  order: 4;
+}

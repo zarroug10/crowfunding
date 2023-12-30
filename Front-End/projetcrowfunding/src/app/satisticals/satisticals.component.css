@@ -1,0 +1,28 @@
+.container {
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .chart-container {
+    margin-top: 20px;
+  }
+  
+  canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+  button {
+    display: block;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #1DAA97;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #147563;
+  }
+  

@@ -1,0 +1,13 @@
+<app-complete-navbar></app-complete-navbar>
+<div> <img src="assets\cont.jpg">
+  <h2>Messages de l'Administrateur</h2>
+  <h4>afficher les messages reçus</h4>
+  <div *ngFor="let message of messages">
+    <p>{{ message }}</p>
+  </div>
+   
+  <textarea [(ngModel)]="reponse" placeholder="Répondre..."></textarea>
+  <button (click)="envoyerReponse()">Envoyer Réponse</button>
+</div>
+
+    

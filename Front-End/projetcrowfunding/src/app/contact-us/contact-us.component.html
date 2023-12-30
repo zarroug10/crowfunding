@@ -1,0 +1,49 @@
+
+<app-navbar></app-navbar>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Crowdfunding Project</title>
+  <link rel="stylesheet" href="contact-us.component.css">
+</head>
+
+<body>
+  <header>
+    <h1>Contact Us</h1>
+    <p>Get in touch with us for any inquiries or support.</p>
+  </header>
+
+  <section id="contact-form">
+    <h2>Send us a message</h2>
+    <form action="process_contact.php" method="POST">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Your Message:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <section id="contact-info">
+    <h2>Contact Information</h2>
+    <p>If you prefer other means of communication, feel free to contact us using the information below:</p>
+    <ul>
+      <li>Email: quickwaitted@crowdfunding.com</li>
+      <li>Phone: + (126) 456-1234</li>
+      <li>Address:  123 tunis Avenue, Citytown, Country</li>
+    </ul>
+  </section>
+
+ 
+</body>
+
+</html>
+

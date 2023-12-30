@@ -1,0 +1,20 @@
+<app-complete-navbar></app-complete-navbar>
+<div class="container">
+    <div class="chart-container">
+      <h2>Nombre de visiteurs par semaine</h2>
+      <div style="display: block;">
+        <canvas baseChart
+                [datasets]="visitorChartData.datasets"
+                [labels]="visitorChartData.labels"
+                [options]="barChartOptions"
+                [legend]="true"
+                [type]="barChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)">
+        </canvas>
+      </div>
+    
+      <button (click)="randomizeVisitors()">Générer des données aléatoires</button>
+    </div>
+  </div>
+  
