@@ -6,14 +6,31 @@ pipeline {
   }
 
   stages {
-    stage('Build') {
+    stage('Build Spring') {
       steps {
-        sh 'docker build -t username/spring spring/'
-        sh 'docker build -t username/angular angular/'
+        script {
+          // Change to the directory where your Spring application is located
+          dir('Backend/') {
+            // Build the Docker image for Spring
+            sh 'docker build -t username/spring .'
+          }
+        }
       }
     }
 
-    stage('Login') {
+    stage('Build Angular') {
+      steps {
+        script {
+          // Change to the directory where your Angular application is located
+          dir('Front-End/') {
+            // Build the Docker image for Angular
+            sh 'docker build -t username/angular .'
+          }
+        }
+      }
+    }
+
+    stage('Login to DockerHub') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKERHUB_CREDENTIALS_PSW', usernameVariable: 'DOCKERHUB_CREDENTIALS_USR')]) {
           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
@@ -21,8 +38,9 @@ pipeline {
       }
     }
 
-    stage('Push') {
+    stage('Push Docker Images') {
       steps {
+        // Push the Docker images to DockerHub
         sh 'docker push username/spring'
         sh 'docker push username/angular'
       }
@@ -32,6 +50,7 @@ pipeline {
   post {
     always {
       node('any') {
+        // Logout from DockerHub
         sh 'docker logout'
       }
     }
