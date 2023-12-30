@@ -2,8 +2,10 @@ package com.example.Crowdfunding.Discussions;
 
 import com.example.Crowdfunding.Admins.Admin;
 import com.example.Crowdfunding.Members.Member;
-import jakarta.persistence.*;
+
 import lombok.*;
+
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity

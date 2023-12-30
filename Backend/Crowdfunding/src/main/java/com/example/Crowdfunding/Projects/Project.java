@@ -3,12 +3,12 @@ package com.example.Crowdfunding.Projects;
 
 import com.example.Crowdfunding.Categories.Categories;
 import com.example.Crowdfunding.Members.Member;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity

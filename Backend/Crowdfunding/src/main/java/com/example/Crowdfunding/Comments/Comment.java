@@ -2,7 +2,7 @@ package com.example.Crowdfunding.Comments;
 
 import com.example.Crowdfunding.Members.Member;
 import com.example.Crowdfunding.Projects.Project;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 
 
